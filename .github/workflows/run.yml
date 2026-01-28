@@ -1,1 +1,28 @@
+name: Gulmarg Checker
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install requests
+        run: pip install requests
+
+      - name: Run checker
+        env:
+          BOT_TOKEN: "8582666062:AAGNmxNdsIuyUg00YCg-s1zocJa36laku1Y"
+          CHAT_ID: "922671880"
+        run: python checker.py
 
