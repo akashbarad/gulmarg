@@ -21,6 +21,9 @@ def check():
         if text in page:
             send_telegram("🚨 Gulmarg 17 March tickets AVAILABLE! Book now!")
             return
+         else
+            send_telegram("not opended!")
+            
 
 if __name__ == "__main__":
     send_telegram("Test message from Gulmarg bot ✅")
