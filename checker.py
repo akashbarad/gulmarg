@@ -1,4 +1,3 @@
-
 import requests
 import os
 
@@ -17,13 +16,11 @@ def check():
     r = requests.get(URL, timeout=20)
     page = r.text
 
-    for text in CHECK_TEXTS:
-        if text in page:
-            send_telegram("🚨 Gulmarg 17 March tickets AVAILABLE! Book now!")
-            return
-         else
-            send_telegram("not opended!")
-            
+    # ✅ Check if ANY text is present
+    if any(text in page for text in CHECK_TEXTS):
+        send_telegram("🚨 Gulmarg 17 March tickets AVAILABLE! Book now!")
+    else:
+        send_telegram("❌ Gulmarg tickets not opened yet.")
 
 if __name__ == "__main__":
     send_telegram("Test message from Gulmarg bot ✅")
